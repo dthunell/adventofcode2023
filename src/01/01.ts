@@ -2,7 +2,7 @@ import { loadFile, sum } from "../helpers"
 const digits = [ 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine' ]
 
 const findFirstNumber = (s: string): number => {
-    const match = s.match(/[\d{1}]/)
+    const match = s.match(/[\d]{1}/)
     if (match) {
         return parseInt(match[0], 10)
     }
@@ -11,7 +11,7 @@ const findFirstNumber = (s: string): number => {
 }
 
 const findLastNumber = (s: string): number => {
-    const match = s.match(/[\d{1}]/g)
+    const match = s.match(/[\d]{1}/g)
     if (match) {
         return parseInt(match[match.length-1], 10)
     }
