@@ -46,6 +46,28 @@ const gameIsPossible = (game: Game, cubes: Cubes): boolean => {
   return true
 }
 
+const minCubesNeeded = (game: Game): Cubes => {
+  const blue: number[] = []
+  const green: number[] = []
+  const red: number[] = []
+
+  for (const draw of game.draws) {
+    blue.push(draw.blue)
+    red.push(draw.red)
+    green.push(draw.green)
+  }
+
+  return {
+    blue: Math.max(...blue),
+    red: Math.max(...red),
+    green: Math.max(...green)
+  }
+}
+
+const gamePower = (cubes: Cubes): number => {
+  return (cubes.red || 1) * (cubes.green || 1) * (cubes.blue || 1)
+}
+
 const a = (filePath: string, cubes: Cubes): number => {
   const INPUT: string[] = loadFile(filePath).split("\r\n")
   return INPUT
@@ -55,9 +77,17 @@ const a = (filePath: string, cubes: Cubes): number => {
     .reduce(sum)
 }
 
-const b = (filePath: string, cubes: Cubes): number => 0
+const b = (filePath: string): number => {
+  const INPUT: string[] = loadFile(filePath).split("\r\n")
+  return INPUT
+    .map(parseGame)
+    .map(minCubesNeeded)
+    .map(gamePower)
+    .reduce(sum)
+}
 
 console.log('RESULT 02A: ', a('02/input.txt', { red: 12, green: 13, blue: 14 }))
+console.log('RESULT 02B: ', b('02/input.txt'))
 
 export {
   a,
