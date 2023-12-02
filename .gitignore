@@ -131,3 +131,4 @@ dist
 
 # Ignore JS build files
 src/**/*.js
+dist
