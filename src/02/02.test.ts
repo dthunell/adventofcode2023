@@ -26,7 +26,7 @@ describe('02', () => {
         })
     })
 
-    describe.skip('B', () => {
+    describe('B', () => {
         it('should return 2286 for sample', () => {
             const result = b('02/b.sample.txt')
             expect(result).toBe(2286)
