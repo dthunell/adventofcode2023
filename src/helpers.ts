@@ -8,9 +8,11 @@ const loadFile = (fileName: string): string => {
 const descending = (a:number, b: number): number => b - a
 const sum = (acc: number, current:number): number => acc + current
 
+const isNumber = (c: string): boolean => /\d/.test(c)
 
 export {
   loadFile,
   sum,
-  descending
+  descending,
+  isNumber
 }

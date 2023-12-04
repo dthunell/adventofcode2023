@@ -9,7 +9,7 @@ describe('03', () => {
         })
     })
 
-    describe.skip('B', () => {
+    describe('B', () => {
         it('should return 467835 for sample', () => {
             const result = b('03/b.sample.txt')
             expect(result).toBe(467835)
