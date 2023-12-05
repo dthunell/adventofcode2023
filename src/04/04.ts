@@ -41,33 +41,6 @@ const matchesOnCard = (card: Card): number => {
     return matches
 }
 
-const getNextCards = (cards: Card[], currentIndex: number, numCards: number): Card[] => {
-    const nextIndex = currentIndex + 1
-    return cards.slice(nextIndex, nextIndex + numCards)
-}
-
-// const processCardsRecursive = (cards: Card[]): number => {
-//     const numberOfCards: number[] = [cards.length]
-//     console.log('INITIAL COUNT', numberOfCards, 'INPUT', cards)
-//     for (let i = 0; i < cards.length; i++) {
-//         const matches = matchesOnCard(cards[i])
-
-//         if (matches) {
-//             console.log('MATCHES', matches, 'CARDNO', cards[i].cardNo)
-//             // if (i+1<cards.length) {
-//             const recursiveCount = processCardsRecursive(getNextCards(cards, i, matches))
-//             numberOfCards.push(recursiveCount)
-//             // }
-//             // else {
-//             //     numberOfCards.push(1)
-//             // }
-
-//         }
-//     }
-//     console.log('FINAL COUNT', numberOfCards)
-//     return numberOfCards.reduce(sum)
-// }
-
 const processCardsIterative = (cards: Card[][]): number => {
     let totalNumberOfCards = 0
     for (let i = 0; i < cards.length; i++) {
@@ -92,8 +65,6 @@ const a = (fileName: string): number => {
 
 const b = (fileName: string): number => {
     const initialCards: Card[] = loadFile(fileName).split("\r\n").map(rowToCard)
-    //return processCardsRecursive(initialCards)
-
     return processCardsIterative(initialCards.map(c => [c]))
 }
 
@@ -105,6 +76,5 @@ export {
     b,
     rowToCard,
     pointsOnCard,
-    matchesOnCard,
-    getNextCards
+    matchesOnCard
 }
